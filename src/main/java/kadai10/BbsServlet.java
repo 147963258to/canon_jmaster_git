@@ -2,6 +2,7 @@ package kadai10;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,39 +24,44 @@ public class BbsServlet extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-
+    private List<String> list;
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//文字化け対策
 		request.setCharacterEncoding("UTF-8");
 		
 		//送信データを取得
 		//String emp = request.getParameter("EMP");
-		String message = request.getParameter("message");
+		String NAME =  request.getParameter("NAME");
+		String MESSAGE = request.getParameter("MESSAGE");
 		
 		//Webブラウザへのお知らせ情報の設定
 		response.setContentType("text/html; charset=UTF-8");
-		
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		
-		response.setContentType("Bbs/html; charset=UTF-8");
 		
 		PrintWriter out = response.getWriter();
 		
 		out.println("<!DOCTYPE html>");
 		out.println("<html>");
 		out.println("<head>");
-		out.println("<title>データ受信</title>");
+		out.println("<title>掲示板</title>");
 		out.println("</head>");
 		out.println("<body>");
-		out.println("<h1>データ受信</h1>");
+		out.println("<form action=\"/canon_jmaster_git/BbsServlet\" method=\"post\">");
+		out.println("名前：<br>");
+		out.println("<input type=\"text\" name=\"NAME\">");
+		out.println("<br>");
+		out.println("メッセージ：<br>");
+		out.println("<textarea name=\"MESSAGE\" cols=\"30\" rows=\"5\"></textarea>");
+		out.println("<br>");
+		out.println("<input type=\"submit\" value=\"書き込み\">");
+		out.println("</form>");
 		out.println("<hr>");
-		out.println("名前：" + message + "<br>");
-		out.println("</body>");
-		out.println("</html>");
 
+		
+		
+		
 	}
 
 }

@@ -1,4 +1,4 @@
-package P01;
+package kadai10;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class SampleServlet01
+ * Servlet implementation class BbsServlet
  */
 @WebServlet("/BbsServlet")
 public class BbsServlet extends HttpServlet {
@@ -27,14 +27,19 @@ public class BbsServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//文字化け対策
+		request.setCharacterEncoding("UTF-8");
 		
+		//送信データを取得
+		//String emp = request.getParameter("EMP");
+		String message = request.getParameter("message");
 		
+		//Webブラウザへのお知らせ情報の設定
+		response.setContentType("text/html; charset=UTF-8");
 		
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
-		String message = request.getParameter("message");
 		response.setContentType("Bbs/html; charset=UTF-8");
 		
 		PrintWriter out = response.getWriter();

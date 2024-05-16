@@ -2,7 +2,8 @@ package kadai10;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,7 +25,8 @@ public class BbsServlet extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-    private List<String> list;
+    private Map<String, String> inputData = new HashMap<>();
+    
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -36,6 +38,9 @@ public class BbsServlet extends HttpServlet {
 		//String emp = request.getParameter("EMP");
 		String NAME =  request.getParameter("NAME");
 		String MESSAGE = request.getParameter("MESSAGE");
+		
+		inputData.put(NAME, MESSAGE);
+		
 		
 		//Webブラウザへのお知らせ情報の設定
 		response.setContentType("text/html; charset=UTF-8");
@@ -59,6 +64,9 @@ public class BbsServlet extends HttpServlet {
 		out.println("</form>");
 		out.println("<hr>");
 
+		for(String key:inputData.keySet()) {
+			out.println("name:" + key + " message:" + inputData.get(key) + "<br/>");
+		}
 		
 		
 		

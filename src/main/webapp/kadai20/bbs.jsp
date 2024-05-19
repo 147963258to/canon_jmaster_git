@@ -16,11 +16,6 @@
 	List<String> list = new ArrayList<>();
 	String action = request.getParameter("ACTION");
 	
-// 	セッションを開始する
-// 	ユーザーを一意に識別する
-// 	ユーザーごとのデータをセッション変数に格納する
-// 	同一セッション内の異なるページで、セッション変数として格納されているデータを取得する
-// 	セッションを破棄する
 
 
 	if("write".equals(action)){

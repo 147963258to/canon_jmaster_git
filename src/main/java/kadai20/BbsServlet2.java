@@ -3,6 +3,7 @@ package kadai20;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -27,15 +28,17 @@ public class BbsServlet2 extends HttpServlet {
 		// TODO Auto-generated constructor stub
 	}
 
-	List<String> list = new ArrayList<String>();
-
 	//String action = "write";
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@SuppressWarnings("unchecked")
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
+		List<String> list = new ArrayList<String>();
+
 		//文字化け対策
 		request.setCharacterEncoding("UTF-8");
 		//Webブラウザへのお知らせ情報の設定
@@ -45,6 +48,13 @@ public class BbsServlet2 extends HttpServlet {
 
 		//		out.println("<!DOCTYPE html>");
 		//		out.println("<html>");
+		HttpSession session = request.getSession();
+
+		Object sessionList = session.getAttribute("sessionList");
+
+		if (Objects.nonNull(sessionList)) {
+			list = (ArrayList<String>) sessionList;
+		}
 
 		//送信データを取得
 		String name = request.getParameter("NAME");
@@ -52,6 +62,7 @@ public class BbsServlet2 extends HttpServlet {
 
 		//リストに入れる
 		list.add(name + ":" + message);
+		session.setAttribute("sessionList", list);
 
 		//		out.println("<head>");
 		//		out.println("<title>掲示板</title>");
@@ -67,9 +78,6 @@ public class BbsServlet2 extends HttpServlet {
 		//		out.println("<input type=\"submit\" value=\"書き込み\">");
 		//		out.println("</form>");
 		//		out.println("<hr>");
-
-		HttpSession session = request.getSession();
-		session.setAttribute("sessionList", list);
 
 		RequestDispatcher rd = request.getRequestDispatcher("/ShowServlet");
 

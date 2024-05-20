@@ -48,14 +48,24 @@ public class BbsServlet2 extends HttpServlet {
 
 		//		out.println("<!DOCTYPE html>");
 		//		out.println("<html>");
+		
+		
 		HttpSession session = request.getSession();
 
-		Object sessionList = session.getAttribute("sessionList");
-
-		if (Objects.nonNull(sessionList)) {
-			list = (ArrayList<String>) sessionList;
+		Object sessionid = session.getAttribute("sessionList");
+		System.out.println(sessionid);
+		
+		
+		//セッションIDがNewじゃなかったら
+//		if (!session.isNew()) {
+//			list = (ArrayList<String>) sessionid; 
+//		}
+		
+		//別解
+		if (Objects.nonNull(sessionid)) {
+			list = (ArrayList<String>) sessionid;
 		}
-
+		
 		//送信データを取得
 		String name = request.getParameter("NAME");
 		String message = request.getParameter("MESSAGE");

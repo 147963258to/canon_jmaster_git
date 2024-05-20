@@ -1,18 +1,12 @@
 package p01;
 
-import java.io.Serializable;
-
-public class User implements Serializable {
+public class User {
 	//フィールド
 	private String id;   //ID
 	private String name; //名前
 	private int age;     //年齢
 	
 	//コンストラクタ
-	public User() {
-		
-	}
-	
 	public User(String id, String name, int age) {
 		this.id = id;
 		this.name = name;

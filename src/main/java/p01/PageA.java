@@ -40,10 +40,14 @@ public class PageA extends HttpServlet {
 		
 		request.setAttribute("COMPANY", "キヤノン");
 		
+		User user = new User("01", "山田太郎2", 24);
+		request.setAttribute("USER", user);
+	
 		//リクエストの転送（フォワード処理）
 		//リクエスト転送用のオブジェクトを取得する
 		//RequestDispatcher rd = request.getRequestDispatcher("/pageB");
-		RequestDispatcher rd = request.getRequestDispatcher("/jsp/pageC.jsp");
+		//RequestDispatcher rd = request.getRequestDispatcher("/jsp/pageC.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/jsp/pageD.jsp");
 		
 		//フォワード処理を実行（リクエスト転送処理の実行）
 		rd.forward(request, response);

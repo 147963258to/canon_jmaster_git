@@ -10,7 +10,7 @@
 	<h1>社員更新</h1>
 	<hr>
 
-	<form action="/dmaster/control" method="post">
+	<form action="/canon_jmaster_git/control" method="post">
 		<input type="hidden" name="action" value="update_exec">
 		
 		ID:<input type="text" name="id" value="${user.id}" readonly><br>

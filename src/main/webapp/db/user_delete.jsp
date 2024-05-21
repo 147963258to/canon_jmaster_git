@@ -12,7 +12,7 @@
 	
 	削除ボタンを押せば削除できます。
 
-	<form action="/dmaster/control" method="post">
+	<form action="/canon_jmaster_git/control" method="post">
 		<input type="hidden" name="action" value="delete_exec">
 		<input type="hidden" name="id" value="${user.id}">
 		

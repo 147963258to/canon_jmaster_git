@@ -26,7 +26,7 @@
 				<td>${user.name}</td>
 				<td>${user.age}</td>
 				<td>
-					<form action="/dmaster/control" method="get">
+					<form action="/canon_jmaster_git/control" method="get">
 						<input type="hidden" name="action" value="update">
 						<input type="hidden" name="id" value="${user.id}">
 						
@@ -34,7 +34,7 @@
 					</form>
 				</td>
 				<td>
-					<form action="/dmaster/control" method="get">
+					<form action="/canon_jmaster_git/control" method="get">
 						<input type="hidden" name="action" value="delete">
 						<input type="hidden" name="id" value="${user.id}">
 						
